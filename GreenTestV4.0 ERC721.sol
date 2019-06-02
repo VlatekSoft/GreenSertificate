@@ -297,19 +297,19 @@ contract GenerateToken is StandardToken , MintableToken, BurnableToken {
     {
         
        
-        uint LastTime = block.timestamp;
+        uint LastTime = now;
         
-        for (var i = 0; i < 12; i++)
+        for (var i = 0; i < 24; i++)
             {
                 
-                if ( block.timestamp - LastTime >= 10)
+                if ( now - LastTime >= 3600)
                 {
                 
-                uint premintAmount = 10*10**uint(decimals);
+                uint premintAmount = 1*10**uint(decimals);
                 totalSupply_ = totalSupply_.add(premintAmount);
                 balances[msg.sender] = balances[msg.sender].add(premintAmount);
                 Transfer(address(0), msg.sender, premintAmount);
-                LastTime = block.timestamp;
+                LastTime = now.timestamp;
                 }
             }
             
